@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  accounts-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kong-bank/account-service:latest
+    container_name: accounts
+    ports:
+      - "8081:8081"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+    networks:
+      - kong-bank-network
+
+networks:
+  kong-bank-network:
+    driver: bridge

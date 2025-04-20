@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "accounts"
+version = "1.0.0"
+description = "Kong Bank Accounts Service - Demonstration for Kong API Gateway tooling"
+authors = ["Kong Bank Engineering <engineering@kong-bank.example.com>"]
+readme = "README.md"
+packages = [{include = "accounts"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.0"
+uvicorn = "^0.23.2"
+pydantic = "^2.4.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+httpx = "^0.24.1"
+pytest-cov = "^4.1.0"
+black = "^23.7.0"
+isort = "^5.12.0"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+serve = "accounts.main:main"
+
+[tool.isort]
+profile = "black"
