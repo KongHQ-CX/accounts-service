@@ -1,7 +1,7 @@
 .PHONY: setup install build test lint clean run docker-build docker-push docker-run docker-compose-up docker-compose-down
 
 # Variables
-IMAGE_NAME := kong-bank/account-service
+IMAGE_NAME := kongcx/accounts-service
 IMAGE_TAG := latest
 PORT := 8081
 
