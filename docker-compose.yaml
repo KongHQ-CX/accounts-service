@@ -1,6 +1,6 @@
 services:
   accounts-api:
-    image: kongcx/account-service:latest
+    image: kongcx/account-service:1.0.0
     container_name: accounts
     ports:
       - "8081:8081"
