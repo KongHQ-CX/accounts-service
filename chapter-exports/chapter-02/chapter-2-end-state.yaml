@@ -1,0 +1,167 @@
+type: spec.insomnia.rest/5.0
+name: accounts-service
+meta:
+  id: wrk_c67e137d803147e4aa8657134cee4058
+  created: 1745437611555
+  modified: 1745437611555
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_878ca9b0d5187d95b6ff24df5faccf1a29dba0db
+    created: 1745437611567
+    modified: 1745437611567
+environments:
+  name: Base Environment
+  meta:
+    id: env_878ca9b0d5187d95b6ff24df5faccf1a29dba0db
+    created: 1745437611566
+    modified: 1745482735767
+    isPrivate: false
+  data:
+    base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
+  subEnvironments:
+    - name: OpenAPI env localhost:8081
+      meta:
+        id: env_7a36410e2817429aa9f63576d42f2823
+        created: 1745441143585
+        modified: 1745441143585
+        isPrivate: false
+        sortKey: 1745441143585
+      data:
+        scheme: http
+        host: localhost:8081
+    - name: OpenAPI env localhost:8081
+      meta:
+        id: env_63d575842fc54d3ba76701bdbf4e8f8b
+        created: 1745482645570
+        modified: 1745482645570
+        isPrivate: false
+        sortKey: 1745482645570
+      data:
+        scheme: http
+        host: localhost:8081
+    - name: OpenAPI env localhost:8081
+      meta:
+        id: env_182cebc2d83446b182f21f07d531f1e7
+        created: 1745482702372
+        modified: 1745482702372
+        isPrivate: false
+        sortKey: 1745482702372
+      data:
+        scheme: http
+        host: localhost:8081
+    - name: OpenAPI env localhost:8081
+      meta:
+        id: env_e0025543007a48c68d531ac76648a9c1
+        created: 1745482735770
+        modified: 1745482735770
+        isPrivate: false
+        sortKey: 1745482735770
+      data:
+        scheme: http
+        host: localhost:8081
+spec:
+  contents:
+    openapi: 3.0.3
+    info:
+      title: Accounts API
+      version: 1.0.0
+      description: This API manages bank accounts and balances.
+      contact:
+        name: API Team
+        email: support@example.com
+    servers:
+      - url: http://localhost:8081
+        description: Local development server
+    tags:
+      - name: health
+        description: Health check endpoints
+      - name: accounts
+        description: accounts endpoints
+    paths:
+      /health:
+        get:
+          tags:
+            - health
+          summary: Health check
+          description: Returns the API's current health status, used for monitoring and
+            availability checks.
+          operationId: getHealthStatus
+          responses:
+            "200":
+              description: Health status
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/HealthResponse"
+                  examples:
+                    success:
+                      summary: Healthy response
+                      value: API is healthy
+      /accounts:
+        post:
+          tags:
+            - accounts
+          summary: Create account
+          description: Creates a new account with an initial balance. The account ID is
+            automatically generated.
+          operationId: createAccount
+          requestBody:
+            description: Details of the new account
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/CreateAccountRequest"
+                examples:
+                  savings_account:
+                    summary: Savings account example
+                    value:
+                      type: savings
+                      initial_balance: 5000
+          responses:
+            "201":
+              description: Account created successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Account"
+                  examples:
+                    created_account:
+                      summary: Created account
+                      value:
+                        account_id: 123e4567-e89b-12d3-a456-426614174000
+                        type: savings
+                        balance: 5000
+    components:
+      schemas:
+        HealthResponse:
+          type: string
+          example: API is healthy
+        CreateAccountRequest:
+          type: object
+          required:
+            - type
+            - initial_balance
+          properties:
+            type:
+              type: string
+              description: Type of account (e.g. checking, savings)
+            initial_balance:
+              type: number
+              format: double
+              description: Initial deposit amount
+        Account:
+          type: object
+          properties:
+            account_id:
+              type: string
+              format: uuid
+            type:
+              type: string
+            balance:
+              type: number
+  meta:
+    id: spc_51265b88081a4bdc86e12d4e05331409
+    created: 1745437611564
+    modified: 1745488517595

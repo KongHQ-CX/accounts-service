@@ -1,0 +1,125 @@
+type: mock.insomnia.rest/5.0
+name: accounts-service-mock
+meta:
+  id: wrk_6622197a2b1e455bb13ec130fecc617f
+  created: 1745614918263
+  modified: 1745614918263
+server:
+  meta:
+    id: mock_b509725e4b09462da7df22c9a04c9a6e
+    created: 1745614918307
+    modified: 1745614918307
+  url: http://localhost:8080
+  useInsomniaCloud: false
+routes:
+  - name: /health
+    meta:
+      id: mock-route_733ab3d2dbad47769b160f480c9ef856
+      created: 1745615157041
+      modified: 1745615160932
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:02:36 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: HEAD
+    mimeType: application/json
+    statusCode: 200
+  - name: /health
+    meta:
+      id: mock-route_d92f89157c05408487ba8a4581585018
+      created: 1745615332556
+      modified: 1745615332556
+    body: '"Accounts API is running"'
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:08:44 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: GET
+    mimeType: application/json
+    statusCode: 200
+  - name: /accounts
+    meta:
+      id: mock-route_7f3ddd60bf6b48c3bf9e499fe3524be1
+      created: 1745615451970
+      modified: 1745615453977
+    body: '{"account_id":"bb73daca-12c4-49db-a36d-19897a724c0e","type":"savings","balance":5000.0}'
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:10:31 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: POST
+    mimeType: application/json
+    statusCode: 201
+  - name: /accounts/bb73daca-12c4-49db-a36d-19897a724c0e/credit
+    meta:
+      id: mock-route_0bb2dde007e143c1882393f72b21a889
+      created: 1745615474946
+      modified: 1745615479320
+    body: '{"account_id":"bb73daca-12c4-49db-a36d-19897a724c0e","type":"savings","balance":5100.0}'
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:11:08 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: POST
+    mimeType: application/json
+    statusCode: 200
+  - name: /accounts/bb73daca-12c4-49db-a36d-19897a724c0e/debit
+    meta:
+      id: mock-route_ea65e56d3ad84830a8996e6608840422
+      created: 1745615500974
+      modified: 1745615505810
+    body: '{"account_id":"bb73daca-12c4-49db-a36d-19897a724c0e","type":"savings","balance":5000.0}'
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:11:34 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: POST
+    mimeType: application/json
+    statusCode: 200
+  - name: /accounts/bb73daca-12c4-49db-a36d-19897a724c0e
+    meta:
+      id: mock-route_80716bbe652d4d3bacf720971906b4a5
+      created: 1745615517513
+      modified: 1745615517513
+    body: '{"account_id":"bb73daca-12c4-49db-a36d-19897a724c0e","type":"savings","balance":5000.0}'
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:11:53 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: GET
+    mimeType: application/json
+    statusCode: 200
+  - name: /accounts
+    meta:
+      id: mock-route_e27f258ebf294ecf8f74160ce344fa8a
+      created: 1745615530040
+      modified: 1745615530040
+    body: '[{"account_id":"cbd5337d-da8c-4670-8b52-1c400ebc4dc3","type":"savings","balance":5000.0},{"account_id":"a9197e25-3cfd-4c84-8182-eb3ab415f1e6","type":"savings","balance":5000.0},{"account_id":"bb73daca-12c4-49db-a36d-19897a724c0e","type":"savings","balance":5000.0}]'
+    headers:
+      - name: date
+        value: Fri, 25 Apr 2025 21:12:03 GMT
+      - name: server
+        value: uvicorn
+      - name: content-type
+        value: application/json
+    method: GET
+    mimeType: application/json
+    statusCode: 200
