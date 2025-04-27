@@ -1,5 +1,5 @@
 services:
-  accounts-api:
+  accounts-service:
     image: kongcx/accounts-service:1.0.0
     container_name: accounts
     ports:
