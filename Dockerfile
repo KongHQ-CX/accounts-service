@@ -1,8 +1,8 @@
-# Use Python 3.11 slim as base image
-FROM python:3.11-slim AS builder
+# Use Python 3.13 as base image
+FROM python:3.13.4-alpine3.22 AS builder
 
 # Install Poetry with the same version as your local environment
-RUN pip install --no-cache-dir poetry==2.1.2
+RUN pip install --no-cache-dir poetry==2.1.3
 
 # Set working directory
 WORKDIR /app
@@ -17,12 +17,12 @@ RUN poetry config virtualenvs.create false && \
     poetry install --only main --no-interaction --no-root
 
 # Final stage
-FROM python:3.11-slim
+FROM python:3.13.4-alpine3.22
 
 WORKDIR /app
 
 # Copy installed packages from builder stage
-COPY --from=builder /usr/local/lib/python3.11/site-packages/ /usr/local/lib/python3.11/site-packages/
+COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 
 # Create accounts directory - this must happen before copying files
@@ -33,7 +33,9 @@ COPY accounts/ ./accounts/
 COPY README.md ./
 
 # Install curl for health checks
-RUN apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+        libffi \
+        curl
 
 # Expose API port
 EXPOSE 8081
