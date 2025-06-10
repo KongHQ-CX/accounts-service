@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "accounts"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.13"
 fastapi = "^0.115.12"
 uvicorn = "^0.34.3"
 pydantic = "^2.11.5"
