@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "accounts"
-version = "1.0.0"
+version = "1.0.1"
 description = "Kong Bank Accounts Service - Demonstration for Kong API Gateway tooling"
 authors = ["Kong Bank Engineering <engineering@kong-bank.example.com>"]
 readme = "README.md"
@@ -8,13 +8,16 @@ packages = [{include = "accounts"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.104.0"
-uvicorn = "^0.23.2"
-pydantic = "^2.4.2"
+fastapi = "^0.115.12"
+uvicorn = "^0.34.3"
+pydantic = "^2.11.5"
+h11 = "^0.16.0"
+requests = "^2.32.4"
+setuptools = "^80.9.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
-httpx = "^0.24.1"
+httpx = "^0.28.1"
 pytest-cov = "^4.1.0"
 black = "^23.7.0"
 isort = "^5.12.0"
